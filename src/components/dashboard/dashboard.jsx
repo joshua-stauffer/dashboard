@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useReducer} from 'react';
 
 import { Overview } from './overview';
@@ -14,17 +14,14 @@ import { ErrorView } from './errorView';
 
 
 
-export function Dashboard() {
+export function Dashboard({ token, logout }) {
   const [state, dispatch] = useReducer(resourceReducer, resourceReducerState);
-  const [callAPI, isLoading] = useAPI(dispatch);
+  const [callAPI, isLoading] = useAPI(dispatch, token, logout);
   const getData = useDataStore();
   const dataObject = getData(state.view)
   const { hasLoaded } = dataObject;
   const [dataFuncs] = useData(dataObject, dispatch);
 
-  console.log('data object is ', dataObject)
-  console.log('has loaded is ', hasLoaded)
-  console.log('state is ', state)
 
   useEffect(() => {
     if (state.view === 'home'|| state.view === 'error') return

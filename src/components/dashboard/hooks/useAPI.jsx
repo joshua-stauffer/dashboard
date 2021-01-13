@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 
 
-export function useAPI(dispatch){
+export function useAPI(dispatch, token, logout){
 
   // const [hasLoaded, setHasLoaded] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -11,7 +11,7 @@ export function useAPI(dispatch){
   const [APIArgs, setAPIArgs] = useState(null);
 
   const resetAPICall = useCallback(() => {
-    console.log('resetting api call')
+    // console.log('resetting api call')
     setAPIAddress(null);
     setAPIArgs(null);
     setLoadData(false);
@@ -21,7 +21,7 @@ export function useAPI(dispatch){
   }, [dataObject])
 
   const errorReset = () => {
-    console.log('error reset in api call')
+    // console.log('error reset in api call')
     setAPIAddress(null);
     setAPIArgs(null);
     setLoadData(false);
@@ -35,14 +35,25 @@ export function useAPI(dispatch){
     // console.log('calling api with the following args: ', APIArgs, APIAddress, dataObject)
     setIsLoading(true)
     setLoadData(false)
-    //setHasLoaded(false)
+
+    // add authentication to the header
+    const authArgs = {
+      ...APIArgs,
+      headers: {
+        ...APIArgs.headers,
+        'authorization': 'Bearer ' + token
+      }
+    }
+
     // make api call
-    fetch(APIAddress, APIArgs)
+    fetch(APIAddress, authArgs)
       .then(r => {
         console.log('r is ', r)
         console.log('status is ', r.status)
         if (!r.ok) {
-          
+          if (r.status === 401) {
+            logout('Your session expired - please login and try again. (note that your data is still saved here in the browser, but not yet saved to the server)')
+          }
           dispatch({
             type: 'error',
             payload: {
@@ -58,17 +69,14 @@ export function useAPI(dispatch){
         if (data) {
           console.log('got data ',  data)
           setIsLoading(false);
-          //setHasLoaded(true)
           dataObject.updateData(data, dataObject.id);
           dataObject.dataHasLoaded(dataObject.id);
           //console.log('just updated data for ', dataObject.id)
           resetAPICall();
         }
       })
-      // TODO: if error, reset hasLoaded to true
       .catch((error => {
         console.log(error)
-        //dataObject.dataHasLoaded()
       }))
 
   }, [loadData, APIArgs, APIAddress, dataObject, resetAPICall])
@@ -80,7 +88,6 @@ export function useAPI(dispatch){
     setAPIArgs(APIArgs);
     setDataObject(dataObject);
     setLoadData(true);
-    //setHasLoaded(false);
     setIsLoading(true);
   }
   

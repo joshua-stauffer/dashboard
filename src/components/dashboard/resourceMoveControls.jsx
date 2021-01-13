@@ -9,7 +9,7 @@ export function ResourceMoveControls({ id, order, isFirst, isLast, view, funcs, 
     <div className='gen-list-move-controls'>
 
       { (order || order === 0) && 
-        <>
+        <div>
           <button
             onClick={() => moveUp(order, view)}
             disabled={moveUp && !isFirst ? false : true}
@@ -26,7 +26,7 @@ export function ResourceMoveControls({ id, order, isFirst, isLast, view, funcs, 
             <ImMoveDown {...buttonStyle}/>
           </button>
 
-        </>
+        </div>
       }
         <button
           onClick={() => del(id)}

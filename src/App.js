@@ -1,30 +1,23 @@
 import './App.css';
 import React from 'react';
-
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from 'react-router-dom'
-
-// Thesaurus was replaced by ThesaurusBase in merge 1/9/2020
-//import { Thesaurus } from './components/thesaurus/thesaurus'
+import { useState } from 'react';
 import { Dashboard } from './components/dashboard/dashboard'
-import { ThesaurusBase } from './components/thesaurus/thesaurusBase'
+import { Login } from './components/dashboard/login';
 
 function App() {
+  const [token, setToken] = useState(null)
+  const [logoutMsg, setLogoutMsg] = useState('')
+  const logout = (msg) => {
+    setLogoutMsg(msg)
+    setToken(null);
+  }
+
+  if (!token) {
+    return <Login setToken={setToken} msg={logoutMsg}/>
+  }
+
   return (
-    <Router>
-      <Switch>
-        <Route path="/visual-thesaurus">
-          <ThesaurusBase /> 
-        </Route>
-        <Route path="/dashboard">
-          <Dashboard />
-        </Route>
-      </Switch>
-    </Router>
+    <Dashboard token={token} logout={logout}/>
   )
 }
 

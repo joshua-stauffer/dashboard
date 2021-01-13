@@ -2,14 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { ApiProvider } from './components/thesaurus/apiHook';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ApiProvider>
-      <App />
-    </ApiProvider>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
