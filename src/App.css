@@ -177,16 +177,12 @@ form .form-label {
 .overview .overview-header-h1 {
   color: #3B7D60;
   font-family: "Nothing You Could Do";
-}
-
-.overview .overview-header-h1 {
-  color: #3B7D60;
-  font-family: "Nothing You Could Do";
+  font-size: 5rem;
 }
 
 .overview {
   width: 400px;
-  height: 600px;
+  height: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -223,6 +219,52 @@ form .form-label {
 
 .overview button:hover {
   background-color: #3B7D60;
+}
+
+.login-box {
+  width: 400px;
+  height: 400;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  justify-self: start;
+}
+
+.login-box label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.login-box label p {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 50px;
+}
+
+.login-box label input {
+  height: 20px;
+}
+
+.login-box button {
+  width: 100px;
+  height: 50px;
 }
 
 .main-dashboard .gen-body {
@@ -536,6 +578,13 @@ form .form-label {
   margin: 5px;
 }
 
+.thesaurus-header {
+  color: #385749ff;
+  font-family: "Quicksand", sans-serif;
+  font-size: 3rem;
+  text-align: left;
+}
+
 .thesaurus-item {
   list-style: none;
   display: -webkit-box;
@@ -548,6 +597,10 @@ form .form-label {
 .thesaurus-item svg {
   margin: 0;
   margin-right: 50px;
+}
+
+.thesaurus-item .thesaurus-term {
+  margin-right: 300px;
 }
 
 .thesaurus-item button,
@@ -578,7 +631,8 @@ form .form-label {
 
 .thesaurus-item svg {
   position: relative;
-  top: 11px;
+  top: 6px;
+  left: 10px;
 }
 
 .thesaurus-term-box {
@@ -599,11 +653,12 @@ form .form-label {
   font-size: 1.5rem;
   letter-spacing: 0.1rem;
   position: relative;
-  width: 50%;
+  width: 385px;
   height: 34px;
 }
 
 .thesaurus-item p {
+  margin-left: 105px;
   position: relative;
   top: 10px;
 }

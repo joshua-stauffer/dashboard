@@ -34,15 +34,12 @@
 .overview .overview-header-h1 {
   color: $accent-similar-dark;
   font-family: $logo-main-font;
-}
-.overview .overview-header-h1 {
-  color: $accent-similar-dark;
-  font-family: $logo-main-font;
+  font-size: 5rem;
 }
 
 .overview {
   width: 400px;
-  height: 600px;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -70,6 +67,33 @@
 .overview button:hover {
   background-color: $accent-similar-dark;
 
+}
+
+.login-box {
+  width: 400px;
+  height: 400;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  justify-self: start;
+}
+.login-box label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-box label p {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 50px;
+}
+.login-box label input {
+  height: 20px;
+}
+.login-box button {
+  width: 100px;
+  height: 50px;
 }
 
 // general view
@@ -335,6 +359,12 @@
 .thesaurus-list {
   //display: flex;
 }
+.thesaurus-header {
+  color: $primary-color;
+  font-family: $body-font;
+  font-size: 3rem;
+  text-align: left;
+}
 .thesaurus-item {
   list-style: none;
   display: flex;
@@ -344,6 +374,9 @@
 .thesaurus-item svg {
   margin: 0;
   margin-right: 50px;
+}
+.thesaurus-item .thesaurus-term {
+  margin-right: 300px;
 }
 .thesaurus-item button,
 .thesaurus-label button {
@@ -369,7 +402,8 @@
 }
 .thesaurus-item svg {
   position: relative;
-  top: 11px;
+  top: 6px;
+  left: 10px;
 }
 .thesaurus-term-box {
   display: flex;
@@ -383,10 +417,11 @@
   font-size: 1.5rem;
   letter-spacing: 0.1rem;
   position: relative;
-  width: 50%;
+  width: 385px;
   height: 34px;
 }
 .thesaurus-item p {
+  margin-left: 105px;
   position: relative;
   top: 10px;
 }

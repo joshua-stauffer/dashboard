@@ -16,7 +16,7 @@ export function ThesaurusList({ id, title, list , allWords, dataFuncs}){
   
   return (
     <div className='sp-item'>
-      <h2 className='gen-sub-header'>{ title }</h2>
+      <h2 className='thesaurus-header'>{ title }</h2>
       <ul className='thesaurus-list'>
         {list.map(d => 
           <ThesaurusItem

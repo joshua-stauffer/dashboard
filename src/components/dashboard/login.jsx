@@ -58,7 +58,7 @@ export function Login({ setToken, msg }) {
             <input type='text' value={username} onChange={updateUsername}/>
           </label>
           <label>
-            <p>Password: </p>
+            <p>Password:  </p>
             <input type='password' value={password} onChange={updatePassword}/>
           </label>
         <button onClick={() => setSubmit(true)}>Submit</button>
