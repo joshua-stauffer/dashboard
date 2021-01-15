@@ -3,7 +3,7 @@ import { FaLink, FaTrash } from 'react-icons/fa'
 export function ThesaurusItem({id, title, word, delFunc, allWords, buttonStyle}) {
   return (
   <li className='thesaurus-item'>
-    <p className='thesaurus-term'>{ word }         
+    <p className='thesaurus-term'>{ word }       
       { allWords.includes(word) && 
         < FaLink 
           {...buttonStyle}

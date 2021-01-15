@@ -48,8 +48,7 @@ export function useAPI(dispatch, token, logout){
     // make api call
     fetch(APIAddress, authArgs)
       .then(r => {
-        console.log('r is ', r)
-        console.log('status is ', r.status)
+
         if (!r.ok) {
           if (r.status === 401) {
             logout('Your session expired - please login and try again. (note that your data is still saved here in the browser, but not yet saved to the server)')
@@ -67,7 +66,7 @@ export function useAPI(dispatch, token, logout){
       })
       .then(data => {
         if (data) {
-          console.log('got data ',  data)
+          //console.log('got data ',  data)
           setIsLoading(false);
           dataObject.updateData(data, dataObject.id);
           dataObject.dataHasLoaded(dataObject.id);
@@ -97,34 +96,3 @@ export function useAPI(dispatch, token, logout){
 
   return [callAPI, isLoading];
 }
-
-/* 
-      .then(data => {
-        console.log('got data ', data)
-        setIsLoading(false)
-        setHasLoaded(true)
-        dataObject.updateData(data)
-        resetAPICall()
-      })
-
-*/
-
-
-/*
-this was right before the return:
-
-
-  const resetAPICall = () => {
-    setAPIAddress(null);
-    setAPIArgs(null);
-    setLoadData(false);
-    dataObject.dataHasLoaded();
-    setIsLoading(false);
-    setDataObject(null);
-  }
-
-
-
-
-
-*/

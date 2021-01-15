@@ -82,7 +82,6 @@ export function useDataStore(){
     thesaurusViewHasBeenReset
     );
 
-  console.log('quotes store is ', genQuotesDataObject)
 
   // switch to deliver access to correct data source
   const getData = (rawView) => {
