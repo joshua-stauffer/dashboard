@@ -21,6 +21,7 @@ export function GenResourceView({ view, dispatch, dataObject, dataFuncs }) {
 
             {canMoveItems && showSaveButton ?
               <button
+                className='wide-button'
                 onClick={saveBatch}
                 disabled={canSave}
               >Save Order

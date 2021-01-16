@@ -144,7 +144,7 @@
 }
 
 .top-bar .header-button-box button {
-  width: 100px;
+  width: 150px;
   height: 50px;
   background-color: $primary-color;
   color: $background-color;
@@ -155,6 +155,7 @@
   margin: 8px;
   box-shadow: none;
 }
+
 
 .top-bar .header-button-box button:hover {
   background-color: $accent-similar-dark;
