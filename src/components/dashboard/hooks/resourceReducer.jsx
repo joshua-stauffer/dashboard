@@ -55,6 +55,17 @@ export function resourceReducer(state, action) {
       }
     }
 
+    case 'quotes-newByOrder': {
+      const order = action.payload.order;
+      return {
+        view: 'quotes-gen',
+        apiAddress: '/api/quotes-' + order,
+        apiArgs: {
+          method: 'POST',
+        }
+      }
+    }
+
     case 'quotes-del': {
       const id = action.payload.id;
       return {
@@ -81,6 +92,20 @@ export function resourceReducer(state, action) {
       }
     }
 
+    case 'quotes-updateBatch': {
+      return {
+        view: 'quotes-gen',
+        apiAddress: '/api/quotes',
+        apiArgs: {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(action.payload.body)
+        }
+      }
+    }
+
     // resources
     case 'resources-gen': {
       return {
@@ -98,6 +123,17 @@ export function resourceReducer(state, action) {
         apiAddress: '/api/resources',
         apiArgs: {
           method: 'POST'
+        }
+      }
+    }
+
+    case 'resources-newByOrder': {
+      const order = action.payload.order;
+      return {
+        view: 'resources-gen',
+        apiAddress: '/api/resources-' + order,
+        apiArgs: {
+          method: 'POST',
         }
       }
     }
@@ -141,16 +177,6 @@ export function resourceReducer(state, action) {
       }
     }
 
-    case 'resources-newById': {
-      const id = action.payload.id;
-      return {
-        view: 'resources-sp-' + id,
-        apiAddress: '/api/resources-' + id,
-        apiArgs: {
-          method: 'POST',
-        }
-      }
-    }
 
     case 'resources-del': {
       const id = action.payload.id;
@@ -182,6 +208,17 @@ export function resourceReducer(state, action) {
         apiAddress: '/api/videos',
         apiArgs: {
           method: 'POST'
+        }
+      }
+    }
+
+    case 'videos-newByOrder': {
+      const order = action.payload.order;
+      return {
+        view: 'videos-gen',
+        apiAddress: '/api/videos-' + order,
+        apiArgs: {
+          method: 'POST',
         }
       }
     }
@@ -225,16 +262,6 @@ export function resourceReducer(state, action) {
       }
     }
 
-    case 'videos-NewById': {
-      const id = action.payload.id;
-      return {
-        view: 'videos-sp-' + id,
-        apiAddress: '/api/videos-' + id,
-        apiArgs: {
-          method: 'POST',
-        }
-      }
-    }
 
     case 'videos-del': {
       const id = action.payload.id;
@@ -265,6 +292,17 @@ export function resourceReducer(state, action) {
         apiAddress: '/api/blog',
         apiArgs: {
           method: 'POST'
+        }
+      }
+    }
+
+    case 'blog-newByOrder': {
+      const order = action.payload.order;
+      return {
+        view: 'blog-gen',
+        apiAddress: '/api/blog-' + order,
+        apiArgs: {
+          method: 'POST',
         }
       }
     }
@@ -308,16 +346,6 @@ export function resourceReducer(state, action) {
       }
     }
 
-    case 'blog-NewById': {
-      const id = action.payload.id;
-      return {
-        view: 'blog-sp-' + id,
-        apiAddress: '/api/blog-' + id,
-        apiArgs: {
-          method: 'POST',
-        }
-      }
-    }
 
     case 'blog-del': {
       const id = action.payload.id;
@@ -364,6 +392,17 @@ export function resourceReducer(state, action) {
       }
     }
 
+    case 'thesaurus-newByOrder': {
+      const order = action.payload.order;
+      return {
+        view: 'thesaurus-gen',
+        apiAddress: '/api/thesaurus-' + order,
+        apiArgs: {
+          method: 'POST',
+        }
+      }
+    }
+
     case 'thesaurus-del': {
       const id = action.payload.id;
       return {
@@ -382,6 +421,20 @@ export function resourceReducer(state, action) {
         apiAddress: 'api/thesaurus-' + id,
         apiArgs: {
           method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(action.payload.body)
+        }
+      }
+    }
+
+    case 'thesaurus-updateBatch': {
+      return {
+        view: 'thesaurus-gen',
+        apiAddress: '/api/thesaurus',
+        apiArgs: {
+          method: 'PATCH',
           headers: {
             'Content-Type': 'application/json'
           },

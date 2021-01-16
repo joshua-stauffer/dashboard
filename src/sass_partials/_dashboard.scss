@@ -75,18 +75,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   justify-self: start;
 }
 .login-box label {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
+  width: 350px;
 }
 .login-box label p {
+  color: white;
   margin-top: 5px;
   margin-bottom: 5px;
   margin-right: 50px;
+  padding-right: 5px;
 }
 .login-box label input {
   height: 20px;
@@ -134,9 +137,14 @@
 .header-button-box {
   display: flex;
 }
+@media (max-width: 800px) {
+  .header-button-box {
+    flex-direction: column;
+  }
+}
 
 .top-bar .header-button-box button {
-  width: 150px;
+  width: 100px;
   height: 50px;
   background-color: $primary-color;
   color: $background-color;
@@ -173,9 +181,7 @@
   border: solid 2px $background-color;
 }
 .gen-list-item:hover {
-  //border-top: solid 2px $primary-color;
-  //border-bottom: dotted 1px $primary-color;
-
+  //use this to show a plus button specific to that spot?
 }
 
 .gen-list-item button  {
@@ -238,7 +244,7 @@
   max-width: 1000px;
   height: 80vh;
   overflow-y: scroll;
-  overflow-x: hidden;
+  //overflow-x: hidden;
   background-color: $background-color;
   border-radius: 5px;
 }
@@ -246,9 +252,10 @@
 
 
 .sp-item {
-  width: 100%;
-  margin: 15px;
+  width: 75vw;
+  //margin: 15px;
   margin-top: 25px;
+  padding-left: 5px;
 }
 .sp-item label {
   display: flex;
@@ -288,8 +295,12 @@
   align-items: center;
   margin: 15px;
 }
+.iframe-preview img {
+  max-width: 50vw;
+}
 .sp-list {
-
+  padding-left: 0;
+  margin: auto 0 auto 0;
 }
 .sp-list-item {
   list-style: none;
@@ -334,7 +345,9 @@
   width: 100%;
   justify-content: space-evenly;
   align-content: center;
+  margin: 20px 0 20px 0;
 }
+
 .add-blog-button {
   font-family: $body-font;
   font-size: 2.5rem;

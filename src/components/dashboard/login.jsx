@@ -25,23 +25,39 @@ export function Login({ setToken, msg }) {
           password: password
         }
       )
-    }).then(r => r.json())
+    }).then(r => {
+        if (r.ok) return r.json()
+        else setErrorMsg(r.status)
+    })
       .then(token => {
+        if (!token) return;
         if (token.access_token) {
           setToken(token.access_token)
           setErrorMsg('')
-        } else {
-          setErrorMsg('Incorrect Username or Password')
         }
       })
-      .catch(error => {
-        setErrorMsg('Incorrect Username or Password')
-      })
+
 
     setSubmit(false)
     setUsername('')
     setPassword('') 
   })
+
+  if (errorMsg === 429) {
+    return (
+      <main className='main-dashboard'>
+  
+        <div className='overview'>
+          <div className='overview-header'>
+            <h1 className='overview-header-h1'>Dashboard</h1>
+          </div>
+          <p>Too many failed login attempts.</p>
+          <p>Please try again later.</p>
+          </div>
+      </main>
+      
+    )
+  }
 
   return (
     <main className='main-dashboard'>
@@ -58,7 +74,7 @@ export function Login({ setToken, msg }) {
             <input type='text' value={username} onChange={updateUsername}/>
           </label>
           <label>
-            <p>Password:  </p>
+            <p> Password:  </p>
             <input type='password' value={password} onChange={updatePassword}/>
           </label>
         <button onClick={() => setSubmit(true)}>Submit</button>

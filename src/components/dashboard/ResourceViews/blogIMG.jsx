@@ -18,6 +18,14 @@ export function BlogIMG({ uri, payload, css, setInput, title, blogButtonsProps }
           alt={ payload }
         />
       </div>
+      
+      <div className="blog-end">
+
+          <a href="https://cloudinary.com/users/login" target="_blank">
+          Upload image here, then copy the url and paste it below.
+          </a>
+
+      </div>
 
       <label>
         <p className='sp-label'>Image Source</p>

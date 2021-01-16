@@ -50,7 +50,7 @@ export function ResourceList({dataObject, dataFuncs, view, name, buttonStyle}){
           <li className='gen-list-item'>
         <div className='gen-list-edit-controls'>
         <button
-          onClick={()=> dataFuncs.add(data.length)}
+          onClick={()=> dataFuncs.addInOrder(data.length)}
           title='Add New'
         >
             <AiOutlinePlus {...buttonStyle}/>

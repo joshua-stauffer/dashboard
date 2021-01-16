@@ -74,8 +74,8 @@ export function useData(dataObject, dispatch){
 
   const addInOrder = order => {
     dataObject.reload();
-    const viewName = dataObject.resource + '-newById'
-    dispatch({type: viewName, payload: {id: order}})
+    const viewName = dataObject.resource + '-newByOrder'
+    dispatch({type: viewName, payload: {order: order}})
   }
 
 

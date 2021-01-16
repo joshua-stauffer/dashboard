@@ -234,9 +234,9 @@ form .form-label {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   justify-self: start;
 }
 
@@ -247,15 +247,18 @@ form .form-label {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 350px;
 }
 
 .login-box label p {
+  color: white;
   margin-top: 5px;
   margin-bottom: 5px;
   margin-right: 50px;
+  padding-right: 5px;
 }
 
 .login-box label input {
@@ -315,8 +318,17 @@ form .form-label {
   display: flex;
 }
 
+@media (max-width: 800px) {
+  .header-button-box {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
 .top-bar .header-button-box button {
-  width: 150px;
+  width: 100px;
   height: 50px;
   background-color: #385749ff;
   color: #ffffffff;
@@ -432,15 +444,14 @@ form .form-label {
   max-width: 1000px;
   height: 80vh;
   overflow-y: scroll;
-  overflow-x: hidden;
   background-color: #ffffffff;
   border-radius: 5px;
 }
 
 .sp-item {
-  width: 100%;
-  margin: 15px;
+  width: 75vw;
   margin-top: 25px;
+  padding-left: 5px;
 }
 
 .sp-item label {
@@ -500,6 +511,15 @@ form .form-label {
   margin: 15px;
 }
 
+.iframe-preview img {
+  max-width: 50vw;
+}
+
+.sp-list {
+  padding-left: 0;
+  margin: auto 0 auto 0;
+}
+
 .sp-list-item {
   list-style: none;
 }
@@ -551,6 +571,7 @@ form .form-label {
           justify-content: space-evenly;
   -ms-flex-line-pack: center;
       align-content: center;
+  margin: 20px 0 20px 0;
 }
 
 .add-blog-button {
