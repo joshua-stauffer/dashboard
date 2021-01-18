@@ -23,7 +23,7 @@ export function ResourceList({dataObject, dataFuncs, view, name, buttonStyle}){
         </div>
       </li>
     
-    {data.map(d => (
+    {(!data) ? null : data.map(d => (
       <li className={d.isEdited ? 'gen-list-item edit-warning' : 'gen-list-item'}>
         <ResourceEditControls 
           id={d.id}

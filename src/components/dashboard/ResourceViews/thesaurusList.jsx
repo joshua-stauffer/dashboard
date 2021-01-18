@@ -5,7 +5,6 @@ import { ThesaurusItem } from './thesaurusItem';
 export function ThesaurusList({ id, title, list , allWords, dataFuncs}){
   
   const { addThesaurusTerm, delThesaurusTerm } = dataFuncs;
-  console.log('add thesaurus and del thesaurus funcs are ', addThesaurusTerm, delThesaurusTerm)
   const [inputState, setInputState] = useState('')
   const addWord = (id, title, val) => {
     addThesaurusTerm(id, title, val)

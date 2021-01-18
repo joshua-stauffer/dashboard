@@ -1,4 +1,3 @@
-import { FaSave } from 'react-icons/fa';
 
 export function MainButtonBar({backFunc, homeFunc, saveFunc, isEdited}) {
 
