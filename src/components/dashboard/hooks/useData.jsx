@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 
 export function useData(dataObject, dispatch){
+  // These utility methods apply to each dataObject,
+  // regardless of their identity as a specificStore object or generalStore object
 
   const { setStore } = dataObject;
 
@@ -10,7 +12,6 @@ export function useData(dataObject, dispatch){
 
       const newData = data.map(object => {
         if (object.order === order) {
-          //console.log('here is the object we were looking for ', object)
           return {
             ...object,
             order: order - 1,
@@ -27,20 +28,16 @@ export function useData(dataObject, dispatch){
         }
       })
 
-      //console.log('here is the new data ', newData)
       return newData
     })
   }
 
 
   const moveDown = order => {
-    //console.log('move down called with ', order)
     setStore(data => {
-  
 
       const newData = data.map(object => {
         if (object.order === order) {
-          //console.log(' this object is getting order + 1 ', object)
           return {
             ...object,
             order: object.order + 1,
@@ -96,7 +93,6 @@ export function useData(dataObject, dispatch){
 
   const save = () => {
     const { id, data, resource, reload } = dataObject;
-    // console.log('saving now, and data is ', data)
     reload(id);
     const viewName = resource + '-updateOne'
     dispatch(

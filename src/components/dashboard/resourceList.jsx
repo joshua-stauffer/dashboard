@@ -8,7 +8,7 @@ import { AiOutlinePlus } from 'react-icons/ai'
 export function ResourceList({dataObject, dataFuncs, view, name, buttonStyle}){
   const { data, isEditedList } = dataObject;
 
-  data.sort(compareObjOrder)
+  if (data.length) data.sort(compareObjOrder);
 
   return (
     <ul className='gen-list'>
@@ -50,7 +50,7 @@ export function ResourceList({dataObject, dataFuncs, view, name, buttonStyle}){
           <li className='gen-list-item'>
         <div className='gen-list-edit-controls'>
         <button
-          onClick={()=> dataFuncs.addInOrder(data.length)}
+          onClick={()=> dataFuncs.addInOrder(data.length ? data.length : 0)}
           title='Add New'
         >
             <AiOutlinePlus {...buttonStyle}/>
