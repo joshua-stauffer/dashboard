@@ -11,7 +11,6 @@ export function useAPI(dispatch, token, logout){
   const [APIArgs, setAPIArgs] = useState(null);
 
   const resetAPICall = useCallback(() => {
-    // console.log('resetting api call')
     setAPIAddress(null);
     setAPIArgs(null);
     setLoadData(false);
@@ -21,7 +20,6 @@ export function useAPI(dispatch, token, logout){
   }, [dataObject])
 
   const errorReset = () => {
-    // console.log('error reset in api call')
     setAPIAddress(null);
     setAPIArgs(null);
     setLoadData(false);
@@ -32,7 +30,6 @@ export function useAPI(dispatch, token, logout){
 
   useEffect(() => {
     if (!loadData) return;
-    // console.log('calling api with the following args: ', APIArgs, APIAddress, dataObject)
     setIsLoading(true)
     setLoadData(false)
 
@@ -49,40 +46,45 @@ export function useAPI(dispatch, token, logout){
     fetch(APIAddress, authArgs)
       .then(r => {
 
+        // errors
         if (!r.ok) {
-          if (r.status === 401) {
-            logout('Your session expired - please login and try again. (note that your data is still saved here in the browser, but not yet saved to the server)')
+          if (r.status === 429) {
+            // hit rate limiter - gracefully ignore
           }
-          dispatch({
-            type: 'error',
-            payload: {
-              errorCode: r.status
+          else {
+            if (r.status === 401) {
+              logout('Your session expired - please login and try again. (note that your data is still saved here in the browser, but not yet saved to the server)')
             }
-          })
-          errorReset()
+            dispatch({
+              type: 'error',
+              payload: {
+                errorCode: r.status
+              }
+            })
+            errorReset()
+          }
+
+        // no errors
         } else {
           return r.json()
         }
       })
       .then(data => {
         if (data) {
-          //console.log('got data ',  data)
           setIsLoading(false);
           dataObject.updateData(data, dataObject.id);
           dataObject.dataHasLoaded(dataObject.id);
-          //console.log('just updated data for ', dataObject.id)
           resetAPICall();
         }
       })
       .catch((error => {
-        console.log(error)
+        // console.log(error)
       }))
 
-  }, [loadData, APIArgs, APIAddress, dataObject, resetAPICall])
+  }, [loadData])
 
 
   const callAPI = (APIAddress, APIArgs, dataObject) => {
-    //console.log('entered callAPI')
     setAPIAddress(APIAddress);
     setAPIArgs(APIArgs);
     setDataObject(dataObject);
